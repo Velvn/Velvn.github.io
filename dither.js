@@ -300,3 +300,15 @@
   const start = () => { renderAll(); if (!reduced) { requestAnimationFrame(loop); requestAnimationFrame(cLoop); } };
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(start);
 })();
+
+/* sticky top bar: shadow once scrolled + highlight the section in view */
+(() => {
+  const nav = document.querySelector('.nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 20);
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+  const links = new Map([...nav.querySelectorAll('.nav-links a')].map(a => [a.getAttribute('href').slice(1), a]));
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) links.forEach((a, id) => a.classList.toggle('active', id === e.target.id));
+  }), { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+})();

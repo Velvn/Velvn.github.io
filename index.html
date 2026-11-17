@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;800;900&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
   <script>
     // theme + language before paint
     try {
@@ -26,24 +26,26 @@
 <body>
   <div class="corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 
+  <!-- ============ STICKY TOP BAR ============ -->
+  <nav class="nav">
+    <a href="#top" class="brand mono" aria-label="Back to top">A.PALOMBA<span class="dim">—</span>LEVAILLANT</a>
+    <ul class="nav-links mono">
+      <li><a href="#about"><span lang="en">About</span><span lang="fr">Profil</span></a></li>
+      <li><a href="#education"><span lang="en">Education</span><span lang="fr">Formation</span></a></li>
+      <li><a href="#experience"><span lang="en">Experience</span><span lang="fr">Parcours</span></a></li>
+      <li><a href="#skills"><span lang="en">Skills</span><span lang="fr">Compétences</span></a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-tools mono">
+      <div class="seg" role="group" aria-label="Language">
+        <button data-set-lang="fr">FR</button><button data-set-lang="en">EN</button>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode"><span class="theme-dot"></span></button>
+    </div>
+  </nav>
+
   <!-- ============ HERO ============ -->
   <header class="frame hero" id="top">
-    <nav class="nav">
-      <a href="#top" class="brand mono">A.PALOMBA<span class="dim">—</span>LEVAILLANT</a>
-      <ul class="nav-links mono">
-        <li><a href="#about"><span lang="en">About</span><span lang="fr">Profil</span></a></li>
-        <li><a href="#education"><span lang="en">Education</span><span lang="fr">Formation</span></a></li>
-        <li><a href="#experience"><span lang="en">Experience</span><span lang="fr">Parcours</span></a></li>
-        <li><a href="#work"><span lang="en">Work</span><span lang="fr">Projets</span></a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <div class="nav-tools mono">
-        <div class="seg" role="group" aria-label="Language">
-          <button data-set-lang="fr">FR</button><button data-set-lang="en">EN</button>
-        </div>
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode"><span class="theme-dot"></span></button>
-      </div>
-    </nav>
 
     <div class="status mono">
       <span class="pulse"></span>
@@ -77,7 +79,7 @@
           <span lang="fr">Diplômé en business de l'Université d'Exeter, bilingue français–anglais, formé entre la France, Dubaï et le Royaume-Uni. Je pilote des équipes, analyse des marchés et transforme la recherche en recommandations concrètes.</span>
         </p>
         <div class="btns mono">
-          <a class="btn" href="#work"><span lang="en">See work</span><span lang="fr">Voir les projets</span></a>
+          <a class="btn" href="#experience"><span lang="en">See experience</span><span lang="fr">Voir le parcours</span></a>
           <a class="btn solid" href="#contact"><span lang="en">Get in touch</span><span lang="fr">Me contacter</span> →</a>
         </div>
       </aside>
@@ -102,12 +104,6 @@
           <span lang="en">Business management graduate with experience in consulting, project management and teamwork in international environments. Curious, adaptable and eager to learn, I'm looking for a first professional role where I can <em>contribute from day one, build my skills and grow within your team.</em></span>
           <span lang="fr">Diplômé en gestion et management, doté d’une expérience en conseil, gestion de projets et travail en équipe dans des environnements internationaux. Curieux, adaptable et désireux d’apprendre, je recherche une première expérience professionnelle me permettant de <em>contribuer concrètement, de développer mes compétences et d’évoluer au sein de votre équipe.</em></span>
         </p>
-        <div class="stats">
-          <div class="stat"><canvas class="stat-art" data-seed="1"></canvas><b>£360K</b><span lang="en">annual revenue potential modelled</span><span lang="fr">de revenus annuels potentiels modélisés</span></div>
-          <div class="stat"><canvas class="stat-art" data-seed="2"></canvas><b>275K+</b><span lang="en">article reads supported</span><span lang="fr">lectures d'articles</span></div>
-          <div class="stat"><canvas class="stat-art" data-seed="3"></canvas><b>200+</b><span lang="en">participants across 10+ events</span><span lang="fr">participants sur 10+ événements</span></div>
-          <div class="stat"><canvas class="stat-art" data-seed="4"></canvas><b>+40%</b><span lang="en">team participation in 3 months</span><span lang="fr">de participation en 3 mois</span></div>
-        </div>
       </div>
 
       <div class="sub-head mono"><span lang="en">Off the clock</span><span lang="fr">En dehors du travail</span><span class="dim">— <span lang="en">the human behind the CV</span><span lang="fr">l'humain derrière le CV</span></span></div>
@@ -133,78 +129,95 @@
     <!-- ============ 03 EXPERIENCE ============ -->
     <section class="frame section" id="experience">
       <div class="sec-head mono"><span>[ 03 ]</span><span lang="en">Experience</span><span lang="fr">Expérience</span><canvas class="strip"></canvas></div>
-      <ol class="rows">
+      <ol class="rows xp">
         <li class="row">
           <span class="mono when">NOV 2026</span>
-          <div><h4>42 London</h4><p class="role"><span lang="en">Discovery Week — Intern</span><span lang="fr">Stagiaire — Semaine de découverte</span></p>
-            <p><span lang="en">Built small web projects in HTML, CSS and JavaScript through peer-to-peer coding challenges.</span><span lang="fr">Projets web en HTML, CSS et JavaScript lors de défis de code en pair-à-pair.</span></p></div>
+          <div>
+            <h4>42 London</h4>
+            <p class="role"><span lang="en">Intern — Discovery Week</span><span lang="fr">Stagiaire — Semaine de découverte</span></p>
+            <ul class="pts">
+              <li><span lang="en">Built front-end web projects in HTML, CSS and JavaScript in an intensive, self-directed, peer-to-peer learning environment.</span><span lang="fr">Réalisation de projets web front-end en HTML, CSS et JavaScript dans un environnement d'apprentissage intensif, autonome et en pair-à-pair.</span></li>
+              <li><span lang="en">Solved collaborative coding challenges under time pressure, building problem-solving, autonomy and peer-review habits.</span><span lang="fr">Résolution de défis de code collaboratifs sous contrainte de temps : résolution de problèmes, autonomie et revue par les pairs.</span></li>
+            </ul>
+            <ul class="tags mono"><li>Front-end</li><li>JavaScript</li><li><span lang="en">Problem-solving</span><span lang="fr">Résolution de problèmes</span></li><li><span lang="en">Agile learning</span><span lang="fr">Apprentissage agile</span></li></ul>
+          </div>
           <span class="mono where">LONDON, UK</span>
         </li>
         <li class="row">
           <span class="mono when">SEP 2024 – APR 2025</span>
-          <div><h4>180 Degrees Consulting</h4><p class="role"><span lang="en">Project Manager</span><span lang="fr">Chef de projet</span></p>
-            <p><span lang="en">Led cross-functional teams of 4–6 consultants across two project cycles with agile practices (sprints, Kanban, client feedback loops); designed and ran selection interviews for 5+ candidate groups.</span><span lang="fr">Pilotage d'équipes de 4 à 6 consultants sur deux cycles en méthodes agiles (sprints, Kanban, boucles de feedback client) ; entretiens de sélection pour 5+ groupes de candidats.</span></p></div>
-          <span class="mono where">EXETER, UK</span>
-        </li>
-        <li class="row">
-          <span class="mono when">FEB 2024 – JUN 2024</span>
-          <div><h4>180 Degrees Consulting</h4><p class="role"><span lang="en">Strategy Consultant</span><span lang="fr">Consultant en stratégie</span></p>
-            <p><span lang="en">Partner mapping and a complete social media strategy for KLNA, a humanitarian NGO.</span><span lang="fr">Cartographie de partenaires et stratégie social media complète pour KLNA, ONG humanitaire.</span></p></div>
+          <div>
+            <h4>180 Degrees Consulting</h4>
+            <p class="role"><span lang="en">Project Manager</span><span lang="fr">Chef de projet</span></p>
+            <ul class="pts">
+              <li><span lang="en">Led cross-functional teams of 4–6 consultants across two project cycles, running agile delivery (sprints, Kanban, client feedback loops) from scoping to final recommendations.</span><span lang="fr">Pilotage d'équipes pluridisciplinaires de 4 à 6 consultants sur deux cycles de projet, en méthodes agiles (sprints, Kanban, boucles de feedback client), du cadrage aux recommandations finales.</span></li>
+              <li><span lang="en">Owned the go-to-market strategy for Polaris Integrated Technologies, a space-tech start-up: competitive benchmarking, procurement-channel analysis and evaluation of 4 candidate sites.</span><span lang="fr">Responsable de la stratégie go-to-market de Polaris Integrated Technologies, start-up spatiale : benchmark concurrentiel, analyse des canaux d'achat et évaluation de 4 sites d'implantation.</span></li>
+              <li><span lang="en">Modelled 3 pricing scenarios projecting up to £360K in annual revenue potential in a UK market estimated at £48M by 2030, giving the client a clear, data-driven launch decision.</span><span lang="fr">Modélisation de 3 scénarios tarifaires projetant jusqu'à 360 K£ de revenus annuels potentiels sur un marché britannique estimé à 48 M£ d'ici 2030, pour une décision de lancement fondée sur les données.</span></li>
+              <li><span lang="en">Designed and ran structured selection interviews for 5+ candidate groups, assessing technical skills, collaboration and project fit.</span><span lang="fr">Conception et conduite d'entretiens de sélection structurés pour 5+ groupes de candidats : compétences techniques, collaboration et adéquation au projet.</span></li>
+            </ul>
+            <ul class="tags mono"><li><span lang="en">Project management</span><span lang="fr">Gestion de projet</span></li><li>Agile</li><li><span lang="en">Market entry</span><span lang="fr">Entrée de marché</span></li><li><span lang="en">Pricing strategy</span><span lang="fr">Stratégie tarifaire</span></li><li><span lang="en">Stakeholder management</span><span lang="fr">Gestion des parties prenantes</span></li><li><span lang="en">Recruitment</span><span lang="fr">Recrutement</span></li></ul>
+          </div>
           <span class="mono where">EXETER, UK</span>
         </li>
         <li class="row">
           <span class="mono when">SEP 2024 – FEB 2025</span>
-          <div><h4>Exeter Economics Review</h4><p class="role"><span lang="en">Partnership Officer</span><span lang="fr">Chargé de partenariats</span></p>
-            <p><span lang="en">Outreach to 15+ organisations, sponsorship calls and negotiation; relationships with 5+ departments and partners.</span><span lang="fr">Prospection de 15+ organisations, parrainages et négociation ; relations avec 5+ départements et partenaires.</span></p></div>
+          <div>
+            <h4>Exeter Economics Review</h4>
+            <p class="role"><span lang="en">Partnership Officer</span><span lang="fr">Chargé de partenariats</span></p>
+            <ul class="pts">
+              <li><span lang="en">Drove business development: prospected 15+ organisations and student societies, led sponsorship and partnership calls and negotiated terms.</span><span lang="fr">Développement commercial : prospection de 15+ organisations et associations étudiantes, conduite des appels de parrainage et de partenariat, négociation des conditions.</span></li>
+              <li><span lang="en">Managed relationships with 5+ academic departments and external partners, with regular reporting on engagement KPIs.</span><span lang="fr">Gestion de la relation avec 5+ départements universitaires et partenaires externes, avec un reporting régulier sur les KPI d'engagement.</span></li>
+              <li><span lang="en">Contributed to 275,000+ article reads and the Review's runner-up place for Impact Society of the Year (Exeter Students' Guild).</span><span lang="fr">Contribution à 275 000+ lectures d'articles et à la 2ᵉ place de la revue au prix « Impact Society of the Year » (Exeter Students' Guild).</span></li>
+            </ul>
+            <ul class="tags mono"><li>Business development</li><li><span lang="en">Negotiation</span><span lang="fr">Négociation</span></li><li><span lang="en">Partnerships</span><span lang="fr">Partenariats</span></li><li><span lang="en">Client relations</span><span lang="fr">Relation client</span></li><li><span lang="en">KPI reporting</span><span lang="fr">Reporting KPI</span></li></ul>
+          </div>
           <span class="mono where">EXETER, UK</span>
         </li>
         <li class="row">
+          <span class="mono when">FEB 2024 – JUN 2024</span>
+          <div>
+            <h4>180 Degrees Consulting</h4>
+            <p class="role"><span lang="en">Strategy Consultant</span><span lang="fr">Consultant en stratégie</span></p>
+            <ul class="pts">
+              <li><span lang="en">Mapped the partner ecosystem of KLNA, a humanitarian NGO (65+ volunteers, 3,200+ food parcels), and shortlisted 5 mission-aligned organisations to diversify its network and funding sources.</span><span lang="fr">Cartographie de l'écosystème de partenaires de KLNA, ONG humanitaire (65+ bénévoles, 3 200+ colis alimentaires), et sélection de 5 organisations alignées pour diversifier son réseau et ses financements.</span></li>
+              <li><span lang="en">Delivered a ready-to-use social media strategy to the NGO's leadership: brand guidelines, 4 logo variations and a weekly/monthly editorial calendar.</span><span lang="fr">Livraison à la direction de l'ONG d'une stratégie social media clé en main : charte graphique, 4 déclinaisons de logo et calendrier éditorial hebdomadaire/mensuel.</span></li>
+            </ul>
+            <ul class="tags mono"><li><span lang="en">Strategy consulting</span><span lang="fr">Conseil en stratégie</span></li><li><span lang="en">Stakeholder mapping</span><span lang="fr">Cartographie des acteurs</span></li><li><span lang="en">Brand strategy</span><span lang="fr">Stratégie de marque</span></li><li>Social media</li><li><span lang="en">Non-profit</span><span lang="fr">ONG</span></li></ul>
+          </div>
+          <span class="mono where">EXETER, UK</span>
+        </li>
+        <li class="row">
+          <span class="mono when">JUL 2023</span>
+          <div>
+            <h4>Auckland University of Technology</h4>
+            <p class="role"><span lang="en">Finalist — Accounting Case Competition 2023</span><span lang="fr">Finaliste — Compétition de cas en comptabilité 2023</span></p>
+            <ul class="pts">
+              <li><span lang="en">Reached the final by analysing the impact of AI on the accounting profession for Hall Chadwick.</span><span lang="fr">Qualification en finale grâce à une analyse de l'impact de l'IA sur la profession comptable pour Hall Chadwick.</span></li>
+              <li><span lang="en">Built and pitched a full market-analysis deck to the jury: key issues, opportunities and strategic recommendations.</span><span lang="fr">Conception et présentation au jury d'un deck d'analyse de marché complet : enjeux, opportunités et recommandations stratégiques.</span></li>
+            </ul>
+            <ul class="tags mono"><li><span lang="en">Market analysis</span><span lang="fr">Analyse de marché</span></li><li><span lang="en">AI &amp; finance</span><span lang="fr">IA &amp; finance</span></li><li><span lang="en">Strategic recommendations</span><span lang="fr">Recommandations stratégiques</span></li><li>Pitch</li></ul>
+          </div>
+          <span class="mono where"><span lang="en">CASE COMPETITION</span><span lang="fr">COMPÉTITION</span></span>
+        </li>
+        <li class="row">
           <span class="mono when">DEC 2020 – MAR 2021</span>
-          <div><h4>Damage Inc</h4><p class="role"><span lang="en">Team Leader</span><span lang="fr">Chef d'équipe</span></p>
-            <p><span lang="en">Hosted 10+ events for 200+ participants (≈ +25% division activity at peak) and re-engaged a low-activity team: +40% participation in three months.</span><span lang="fr">10+ événements pour 200+ participants (≈ +25 % d'activité en pointe) et remobilisation d'une équipe : +40 % de participation en trois mois.</span></p></div>
+          <div>
+            <h4>Damage Inc</h4>
+            <p class="role"><span lang="en">Team Leader</span><span lang="fr">Chef d'équipe</span></p>
+            <ul class="pts">
+              <li><span lang="en">Organised and hosted 10+ large-scale events for 200+ participants, lifting division activity by an estimated 25% during peak weeks.</span><span lang="fr">Organisation et animation de 10+ événements d'envergure pour 200+ participants, soit environ +25 % d'activité de la division en période de pointe.</span></li>
+              <li><span lang="en">Re-engaged a low-activity team through weekly check-ins and interest-based matchmaking: +40% member participation in three months.</span><span lang="fr">Remobilisation d'une équipe peu active grâce à des points hebdomadaires et des binômes par centres d'intérêt : +40 % de participation en trois mois.</span></li>
+              <li><span lang="en">Oversaw coordination, compliance and engagement metrics; the team ranked among the division's top performers four weeks running.</span><span lang="fr">Suivi de la coordination, de la conformité et des indicateurs d'engagement ; équipe classée parmi les plus performantes quatre semaines consécutives.</span></li>
+            </ul>
+            <ul class="tags mono"><li><span lang="en">Team leadership</span><span lang="fr">Management d'équipe</span></li><li><span lang="en">Event management</span><span lang="fr">Gestion d'événements</span></li><li><span lang="en">Engagement</span><span lang="fr">Engagement</span></li><li><span lang="en">Performance tracking</span><span lang="fr">Suivi de la performance</span></li></ul>
+          </div>
           <span class="mono where">DUBAI, UAE</span>
         </li>
       </ol>
     </section>
 
-    <!-- ============ 04 WORK ============ -->
-    <section class="frame section" id="work">
-      <div class="sec-head mono"><span>[ 04 ]</span><span lang="en">Selected work</span><span lang="fr">Projets choisis</span><canvas class="strip"></canvas></div>
-      <div class="cards">
-        <article class="card">
-          <canvas class="art" data-art="orbit"></canvas>
-          <div class="card-meta mono"><span>180 DEGREES CONSULTING</span><span>2024–25</span></div>
-          <h3><span lang="en">Market entry for a space-tech start-up</span><span lang="fr">Entrée de marché pour une start-up spatiale</span></h3>
-          <p><span lang="en">Led 5 consultants on Polaris Integrated Technologies' UK go-to-market: competitor benchmark, procurement channels, 4 candidate sites and 3 pricing strategies — projecting up to £360K a year in a market estimated at £48M by 2030.</span><span lang="fr">Pilotage de 5 consultants sur le go-to-market britannique de Polaris Integrated Technologies : benchmark, canaux d'achat, 4 sites et 3 stratégies tarifaires — jusqu'à 360 K£ par an sur un marché estimé à 48 M£ en 2030.</span></p>
-          <ul class="tags mono"><li>Strategy</li><li>Pricing</li><li>Team lead</li></ul>
-        </article>
-        <article class="card">
-          <canvas class="art" data-art="network"></canvas>
-          <div class="card-meta mono"><span>180 DEGREES CONSULTING</span><span>2024</span></div>
-          <h3><span lang="en">Partner network for a humanitarian NGO</span><span lang="fr">Réseau de partenaires pour une ONG humanitaire</span></h3>
-          <p><span lang="en">Mapped and shortlisted partners for KLNA (65+ volunteers, 3,200+ food parcels) and delivered a ready-to-use social media strategy: brand guidelines, 4 logo variations, weekly and monthly calendar.</span><span lang="fr">Cartographie et sélection de partenaires pour KLNA (65+ bénévoles, 3 200+ colis) et stratégie social media clé en main : charte, 4 déclinaisons de logo, calendrier éditorial.</span></p>
-          <ul class="tags mono"><li>Research</li><li>NGO</li><li>Brand</li></ul>
-        </article>
-        <article class="card">
-          <canvas class="art" data-art="bars"></canvas>
-          <div class="card-meta mono"><span>EXETER ECONOMICS REVIEW</span><span>2024–25</span></div>
-          <h3><span lang="en">Partnerships that grew a student journal</span><span lang="fr">Des partenariats pour faire grandir une revue</span></h3>
-          <p><span lang="en">Prospected 15+ organisations, led sponsorship calls and negotiated terms; managed 5+ departments and partners as the Review passed 275,000 reads and placed runner-up for Impact Society of the Year.</span><span lang="fr">Prospection de 15+ organisations, appels de parrainage et négociation ; suivi de 5+ départements et partenaires, pour 275 000+ lectures et une 2ᵉ place « Impact Society of the Year ».</span></p>
-          <ul class="tags mono"><li>Biz dev</li><li>Negotiation</li><li>Reporting</li></ul>
-        </article>
-        <article class="card">
-          <canvas class="art" data-art="wave"></canvas>
-          <div class="card-meta mono"><span>AUCKLAND UNIV. OF TECHNOLOGY</span><span>2023</span></div>
-          <h3><span lang="en">Finalist — Accounting Case Competition</span><span lang="fr">Finaliste — Compétition de cas en comptabilité</span></h3>
-          <p><span lang="en">Analysed how AI is reshaping accounting for Hall Chadwick and presented a full market analysis with issues, opportunities and strategic recommendations to the jury.</span><span lang="fr">Analyse de l'impact de l'IA sur la comptabilité pour Hall Chadwick, présentée au jury avec enjeux, opportunités et recommandations stratégiques.</span></p>
-          <ul class="tags mono"><li>Analysis</li><li>AI</li><li>Pitch</li></ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ 05 SKILLS ============ -->
+    <!-- ============ 04 SKILLS ============ -->
     <section class="frame section" id="skills">
-      <div class="sec-head mono"><span>[ 05 ]</span><span lang="en">Skills</span><span lang="fr">Compétences</span><canvas class="strip"></canvas></div>
+      <div class="sec-head mono"><span>[ 04 ]</span><span lang="en">Skills</span><span lang="fr">Compétences</span><canvas class="strip"></canvas></div>
       <dl class="skills">
         <dt class="mono"><span lang="en">Core</span><span lang="fr">Clés</span></dt>
         <dd><span lang="en">Project management (agile) · Market analysis &amp; entry strategy · Client &amp; partnership development · Team leadership &amp; recruitment</span><span lang="fr">Gestion de projet (agile) · Analyse de marché &amp; stratégie d'entrée · Relation client &amp; partenariats · Management d'équipe &amp; recrutement</span></dd>
@@ -218,7 +231,7 @@
     <!-- ============ CONTACT ============ -->
     <section class="frame section contact" id="contact">
       <canvas id="contactArt" class="contact-art" aria-hidden="true"></canvas>
-      <div class="sec-head mono"><span>[ 06 ]</span>Contact<canvas class="strip"></canvas></div>
+      <div class="sec-head mono"><span>[ 05 ]</span>Contact<canvas class="strip"></canvas></div>
       <h2 class="display big"><span lang="en">Let's talk.</span><span lang="fr">Parlons-en.</span></h2>
       <div class="contact-links">
         <a class="mono link" href="mailto:Palomba.tonyr@gmail.com">Palomba.tonyr@gmail.com ↗</a>
@@ -233,6 +246,6 @@
     <a href="#top">↑ <span lang="en">Top</span><span lang="fr">Haut</span></a>
   </footer>
 
-  <script src="dither.js?v=7"></script>
+  <script src="dither.js?v=8"></script>
 </body>
 </html>
