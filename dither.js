@@ -301,14 +301,78 @@
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(start);
 })();
 
-/* sticky top bar: shadow once scrolled + highlight the section in view */
+/* sticky top bar: anchor scrolling, shadow once scrolled, highlight the current section */
 (() => {
   const nav = document.querySelector('.nav');
-  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 20);
-  addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  const links = new Map([...nav.querySelectorAll('.nav-links a')].map(a => [a.getAttribute('href').slice(1), a]));
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) links.forEach((a, id) => a.classList.toggle('active', id === e.target.id));
-  }), { rootMargin: '-45% 0px -50% 0px' });
-  links.forEach((_, id) => { const s = document.getElementById(id); if (s) io.observe(s); });
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const links = [...nav.querySelectorAll('.nav-links a')];
+  const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  let lockedId = null; // section chosen by a click, kept highlighted while the scroll animation runs
+  let anim = 0;
+
+  const setActive = id => links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  // where the bar's bottom edge sits once it is stuck to the top (not where it is right now at the page top)
+  const barBottom = () => (parseFloat(getComputedStyle(nav).top) || 0) + nav.offsetHeight;
+
+  // current section = last one whose top has passed just below the bar; at the very bottom, the last section
+  function current() {
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) return sections[sections.length - 1].id;
+    const line = barBottom() + 40;
+    let id = null;
+    for (const s of sections) if (s.getBoundingClientRect().top <= line) id = s.id;
+    return id;
+  }
+
+  function onScroll() {
+    nav.classList.toggle('scrolled', scrollY > 20);
+    if (!lockedId) setActive(current());
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll);
+  onScroll();
+
+  // own scroll animation (doesn't depend on CSS smooth scrolling, which some browsers cancel)
+  let fallback = 0;
+  function scrollToY(y, done) {
+    cancelAnimationFrame(anim); clearTimeout(fallback);
+    const from = scrollY, dist = y - from, dur = reduced ? 0 : Math.min(900, 300 + Math.abs(dist) * 0.25);
+    let finished = false;
+    const finish = () => { if (finished) return; finished = true; cancelAnimationFrame(anim); window.scrollTo(0, y); done && done(); };
+    if (!dur || document.hidden) return finish();
+    const t0 = performance.now();
+    const step = now => {
+      if (finished) return;
+      const t = Math.min(1, (now - t0) / dur);
+      const e = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      window.scrollTo(0, from + dist * e);
+      if (t < 1) anim = requestAnimationFrame(step); else finish();
+    };
+    anim = requestAnimationFrame(step);
+    fallback = setTimeout(finish, dur + 250); // if frames are throttled, still land on the section
+  }
+
+  // every in-page link (top bar, hero buttons, "write", back-to-top)
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    const id = a.getAttribute('href').slice(1);
+    const target = id === 'top' || id === '' ? document.body : document.getElementById(id);
+    if (!target) return;
+    e.preventDefault();
+    const y = id === 'top' ? 0 : Math.max(0, target.getBoundingClientRect().top + scrollY - (barBottom() + 14));
+    const maxY = document.documentElement.scrollHeight - innerHeight;
+    lockedId = sections.some(s => s.id === id) ? id : null;
+    if (lockedId) setActive(lockedId);
+    history.pushState(null, '', '#' + (id || 'top'));
+    scrollToY(Math.min(y, maxY), () => { setTimeout(() => { lockedId = null; onScroll(); }, 120); });
+  });
+
+  // stop the lock if the user scrolls by hand mid-animation
+  ['wheel', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, () => { if (lockedId) { cancelAnimationFrame(anim); clearTimeout(fallback); lockedId = null; } }, { passive: true }));
+
+  // opening a URL with #section
+  if (location.hash.length > 1) {
+    const t = document.getElementById(location.hash.slice(1));
+    if (t) addEventListener('load', () => window.scrollTo(0, t.getBoundingClientRect().top + scrollY - (barBottom() + 14)));
+  }
 })();
