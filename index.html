@@ -7,7 +7,7 @@
   <meta name="description" content="Anthony Palomba Levaillant — Business Management graduate (University of Exeter). Strategy, business development, client relations and HR.">
   <meta property="og:title" content="Anthony Palomba Levaillant — Portfolio">
   <meta property="og:description" content="Turning analysis into decisions people can act on.">
-  <meta name="theme-color" content="#010511">
+  <meta name="theme-color" content="#ecebe5">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +16,8 @@
   <script>
     // theme + language before paint
     try {
+      const t = localStorage.getItem('apl-theme');
+      if (t) document.documentElement.dataset.theme = t;
       const l = localStorage.getItem('apl-lang');
       if (l) { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
     } catch (e) {}
@@ -38,6 +40,7 @@
         <div class="seg" role="group" aria-label="Language">
           <button data-set-lang="fr">FR</button><button data-set-lang="en">EN</button>
         </div>
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode"><span class="theme-dot"></span></button>
       </div>
     </nav>
 
@@ -218,7 +221,7 @@
 
   <footer class="foot mono">
     <span>© 2026 Anthony Palomba Levaillant</span>
-    <span class="dim"><span lang="en">Tritone · Bayer 8×8 &amp; Atkinson dithering</span><span lang="fr">Trichromie · tramage Bayer 8×8 &amp; Atkinson</span></span>
+    <span class="dim"><span lang="en">Rendered in 1-bit · Bayer 8×8 &amp; Atkinson dithering</span><span lang="fr">Rendu en 1 bit · tramage Bayer 8×8 &amp; Atkinson</span></span>
     <a href="#top">↑ <span lang="en">Top</span><span lang="fr">Haut</span></a>
   </footer>
 
