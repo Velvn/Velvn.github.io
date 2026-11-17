@@ -15,13 +15,11 @@
     const n = parseInt(h.slice(0, 6), 16);
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
   }
-  let INK, PAPER2, ACCENT, DARK;
+  // Tritone: level 0 = midnight (background), 1 = deep azure, 2 = coral rose
+  let TONES, DARK = true;
   function readColors() {
     const cs = getComputedStyle(root);
-    INK = hexToRgb(cs.getPropertyValue('--ink'));
-    PAPER2 = hexToRgb(cs.getPropertyValue('--paper-2'));
-    ACCENT = hexToRgb(cs.getPropertyValue('--accent'));
-    DARK = INK[0] > 128; // ink is light → dark theme
+    TONES = [cs.getPropertyValue('--midnight'), cs.getPropertyValue('--azure'), cs.getPropertyValue('--coral')].map(hexToRgb);
   }
 
   function sizeCanvas(c, scale, minW = 8, minH = 4) {
@@ -32,33 +30,38 @@
     return [w, h];
   }
 
-  /** Ordered dither: density(x,y) in 0..1 → ink pixel where density beats the Bayer threshold. */
-  function bayerPaint(ctx, w, h, density, color = INK, alpha = 255) {
+  /** Tritone ordered dither: density 0..1 is split into two bands
+   *  (midnight→azure, azure→coral); the Bayer threshold picks between neighbouring tones.
+   *  Level 0 stays transparent so the page background shows through. */
+  function bayerPaint(ctx, w, h, density) {
     const img = ctx.createImageData(w, h), d = img.data;
     for (let y = 0; y < h; y++) {
       const by = (y & 7) << 3;
       for (let x = 0; x < w; x++) {
-        const v = density(x, y);
-        if (v > BAYER[by + (x & 7)]) {
-          const i = (y * w + x) << 2;
-          d[i] = color[0]; d[i + 1] = color[1]; d[i + 2] = color[2]; d[i + 3] = alpha;
+        const v = Math.min(1, density(x, y)) * 2;
+        if (v <= 0) continue;
+        let lvl = Math.floor(v);
+        if (v - lvl > BAYER[by + (x & 7)]) lvl++;
+        if (lvl > 0) {
+          const c = TONES[Math.min(2, lvl)], i = (y * w + x) << 2;
+          d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
         }
       }
     }
     ctx.putImageData(img, 0, 0);
   }
 
-  /** Atkinson dither of a grayscale buffer (0..1 = ink density) onto ctx. */
+  /** Atkinson error diffusion quantised to the three tones (0, .5, 1). */
   function atkinsonPaint(ctx, w, h, gray, bias = 0) {
     const g = Float32Array.from(gray);
     const img = ctx.createImageData(w, h), d = img.data;
     const spread = (x, y, e) => { if (x >= 0 && x < w && y < h) g[y * w + x] += e; };
     for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-      const i = y * w + x, old = g[i] + bias, on = old > 0.5 ? 1 : 0, err = (old - on) / 8;
+      const i = y * w + x, old = g[i] + bias;
+      const lvl = Math.max(0, Math.min(2, Math.round(old * 2))), err = (old - lvl / 2) / 8;
       spread(x + 1, y, err); spread(x + 2, y, err); spread(x - 1, y + 1, err);
       spread(x, y + 1, err); spread(x + 1, y + 1, err); spread(x, y + 2, err);
-      const p = i << 2;
-      const c = on ? INK : PAPER2;
+      const p = i << 2, c = TONES[lvl];
       d[p] = c[0]; d[p + 1] = c[1]; d[p + 2] = c[2]; d[p + 3] = 255;
     }
     ctx.putImageData(img, 0, 0);
@@ -269,14 +272,6 @@
 
   /* ---------- UI: theme, language, clock, reveal ---------- */
   function renderAll() { readColors(); drawStrips(); drawStats(); buildCards(); drawContact(ct); drawGlobe(); }
-
-  document.getElementById('themeBtn').addEventListener('click', () => {
-    const dark = DARK;
-    root.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('apl-theme', root.dataset.theme); } catch (e) {}
-    renderAll();
-  });
-  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (!root.dataset.theme) renderAll(); });
 
   function setLang(l) {
     root.dataset.lang = l; root.lang = l;
