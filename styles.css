@@ -265,3 +265,10 @@ main > section, #top { scroll-margin-top: 84px; }
 .pts li::before { content: "—"; position: absolute; left: 0; color: var(--ink-2); }
 .xp .tags li { color: var(--ink-2); }
 @media (max-width: 760px) { .xp .row { grid-template-columns: 1fr; gap: 4px; } .nav { top: 6px; margin-bottom: 10px; } }
+
+/* logo mark next to the name */
+.brand { display: inline-flex; align-items: center; gap: 10px; }
+.logo-mark { width: 22px; height: 22px; flex: none; transition: transform .3s ease; }
+.brand:hover .logo-mark { transform: rotate(90deg); }
+.nav-links { white-space: nowrap; }
+@media (max-width: 1000px) { .nav { grid-template-columns: 1fr auto; } .nav-links { display: none; } }
