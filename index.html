@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anthony Palomba Levaillant — Portfolio</title>
+  <meta name="description" content="Anthony Palomba Levaillant — Business Management graduate (University of Exeter). Strategy, business development, client relations and HR.">
+  <meta property="og:title" content="Anthony Palomba Levaillant — Portfolio">
+  <meta property="og:description" content="Turning analysis into decisions people can act on.">
+  <meta name="theme-color" content="#ecebe5">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300;800;900&family=IBM+Plex+Mono:wght@400;500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // theme + language before paint
+    try {
+      const t = localStorage.getItem('apl-theme');
+      if (t) document.documentElement.dataset.theme = t;
+      const l = localStorage.getItem('apl-lang');
+      if (l) { document.documentElement.dataset.lang = l; document.documentElement.lang = l; }
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="corners" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+  <!-- ============ HERO ============ -->
+  <header class="frame hero" id="top">
+    <nav class="nav">
+      <a href="#top" class="brand mono">A.PALOMBA<span class="dim">—</span>LEVAILLANT</a>
+      <ul class="nav-links mono">
+        <li><a href="#about"><span lang="en">About</span><span lang="fr">Profil</span></a></li>
+        <li><a href="#work"><span lang="en">Work</span><span lang="fr">Projets</span></a></li>
+        <li><a href="#experience"><span lang="en">Experience</span><span lang="fr">Parcours</span></a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-tools mono">
+        <div class="seg" role="group" aria-label="Language">
+          <button data-set-lang="fr">FR</button><button data-set-lang="en">EN</button>
+        </div>
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode"><span class="theme-dot"></span></button>
+      </div>
+    </nav>
+
+    <div class="status mono">
+      <span class="pulse"></span>
+      <span lang="en">Available immediately — open to roles in France &amp; abroad</span>
+      <span lang="fr">Disponible immédiatement — ouvert aux postes en France &amp; à l'international</span>
+      <a href="#contact" class="status-cta"><span lang="en">Write</span><span lang="fr">Écrire</span> →</a>
+    </div>
+
+    <div class="infobar mono">
+      <div><b>Anthony</b><span>Palomba Levaillant</span></div>
+      <div><b>Nice · Paris</b><span>France</span></div>
+      <div>
+        <b><span lang="en">Business Management Graduate</span><span lang="fr">Diplômé en Business Management</span></b>
+        <span><span lang="en">Strategy · Business Dev · Client &amp; HR</span><span lang="fr">Stratégie · Dév. commercial · Client &amp; RH</span></span>
+      </div>
+      <div class="right"><b><span lang="en">Local time</span><span lang="fr">Heure locale</span></b><span id="clock">--:--</span></div>
+    </div>
+
+    <div class="hero-body">
+      <div class="hero-copy">
+        <p class="kicker mono">● [ 00 ] · <span lang="en">Portfolio 2026</span><span lang="fr">Portfolio 2026</span></p>
+        <h1 class="display">
+          <span lang="en">Turning<br>analysis into<br>decisions</span>
+          <span lang="fr">Transformer<br>l'analyse en<br>décisions</span>
+        </h1>
+      </div>
+      <canvas id="globe" class="globe" aria-label="Dithered rotating globe" role="img"></canvas>
+      <aside class="hero-card">
+        <p>
+          <span lang="en">Exeter business graduate, bilingual French–English, raised between France, Dubai and the UK. I lead teams, size markets and turn research into recommendations a stakeholder can act on.</span>
+          <span lang="fr">Diplômé en business de l'Université d'Exeter, bilingue français–anglais, formé entre la France, Dubaï et le Royaume-Uni. Je pilote des équipes, analyse des marchés et transforme la recherche en recommandations concrètes.</span>
+        </p>
+        <div class="btns mono">
+          <a class="btn" href="#work"><span lang="en">See work</span><span lang="fr">Voir les projets</span></a>
+          <a class="btn solid" href="#contact"><span lang="en">Get in touch</span><span lang="fr">Me contacter</span> →</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="wordmark display" aria-hidden="true">
+      <span>PALOMBA</span><small class="mono">LEVAILLANT<br>— 2026</small>
+    </div>
+    <div class="hero-foot mono">
+      <span lang="en">BSc Business Management · University of Exeter — 2:1</span>
+      <span lang="fr">BSc Business Management · Université d'Exeter — 2:1</span>
+      <span class="dim">FR C2 / EN C2</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ 01 ABOUT ============ -->
+    <section class="frame section" id="about">
+      <div class="sec-head mono"><span>[ 01 ]</span><span lang="en">About</span><span lang="fr">Profil</span><canvas class="strip"></canvas></div>
+      <div class="about-grid">
+        <p class="lead">
+          <span lang="en">I'm a generalist by choice. At 180 Degrees Consulting I led teams of 4–6 consultants through market-entry strategy, competitive benchmarking and pricing models; at the Exeter Economics Review I built and negotiated partnerships. The thread across all of it: <em>make the numbers useful to the person who has to decide.</em></span>
+          <span lang="fr">Généraliste par choix. Chez 180 Degrees Consulting, j'ai piloté des équipes de 4 à 6 consultants sur des stratégies d'entrée de marché, des benchmarks concurrentiels et des modèles tarifaires ; à l'Exeter Economics Review, j'ai développé et négocié des partenariats. Le fil rouge : <em>rendre les chiffres utiles à celui qui doit décider.</em></span>
+        </p>
+        <div class="stats">
+          <div class="stat"><canvas class="stat-art" data-seed="1"></canvas><b>£360K</b><span lang="en">annual revenue potential modelled</span><span lang="fr">de revenus annuels potentiels modélisés</span></div>
+          <div class="stat"><canvas class="stat-art" data-seed="2"></canvas><b>275K+</b><span lang="en">article reads supported</span><span lang="fr">lectures d'articles</span></div>
+          <div class="stat"><canvas class="stat-art" data-seed="3"></canvas><b>200+</b><span lang="en">participants across 10+ events</span><span lang="fr">participants sur 10+ événements</span></div>
+          <div class="stat"><canvas class="stat-art" data-seed="4"></canvas><b>+40%</b><span lang="en">team participation in 3 months</span><span lang="fr">de participation en 3 mois</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 WORK ============ -->
+    <section class="frame section" id="work">
+      <div class="sec-head mono"><span>[ 02 ]</span><span lang="en">Selected work</span><span lang="fr">Projets choisis</span><canvas class="strip"></canvas></div>
+      <div class="cards">
+        <article class="card">
+          <canvas class="art" data-art="orbit"></canvas>
+          <div class="card-meta mono"><span>180 DEGREES CONSULTING</span><span>2024–25</span></div>
+          <h3><span lang="en">Market entry for a space-tech start-up</span><span lang="fr">Entrée de marché pour une start-up spatiale</span></h3>
+          <p><span lang="en">Led 5 consultants on Polaris Integrated Technologies' UK go-to-market: competitor benchmark, procurement channels, 4 candidate sites and 3 pricing strategies — projecting up to £360K a year in a market estimated at £48M by 2030.</span><span lang="fr">Pilotage de 5 consultants sur le go-to-market britannique de Polaris Integrated Technologies : benchmark, canaux d'achat, 4 sites et 3 stratégies tarifaires — jusqu'à 360 K£ par an sur un marché estimé à 48 M£ en 2030.</span></p>
+          <ul class="tags mono"><li>Strategy</li><li>Pricing</li><li>Team lead</li></ul>
+        </article>
+        <article class="card">
+          <canvas class="art" data-art="network"></canvas>
+          <div class="card-meta mono"><span>180 DEGREES CONSULTING</span><span>2024</span></div>
+          <h3><span lang="en">Partner network for a humanitarian NGO</span><span lang="fr">Réseau de partenaires pour une ONG humanitaire</span></h3>
+          <p><span lang="en">Mapped and shortlisted partners for KLNA (65+ volunteers, 3,200+ food parcels) and delivered a ready-to-use social media strategy: brand guidelines, 4 logo variations, weekly and monthly calendar.</span><span lang="fr">Cartographie et sélection de partenaires pour KLNA (65+ bénévoles, 3 200+ colis) et stratégie social media clé en main : charte, 4 déclinaisons de logo, calendrier éditorial.</span></p>
+          <ul class="tags mono"><li>Research</li><li>NGO</li><li>Brand</li></ul>
+        </article>
+        <article class="card">
+          <canvas class="art" data-art="bars"></canvas>
+          <div class="card-meta mono"><span>EXETER ECONOMICS REVIEW</span><span>2024–25</span></div>
+          <h3><span lang="en">Partnerships that grew a student journal</span><span lang="fr">Des partenariats pour faire grandir une revue</span></h3>
+          <p><span lang="en">Prospected 15+ organisations, led sponsorship calls and negotiated terms; managed 5+ departments and partners as the Review passed 275,000 reads and placed runner-up for Impact Society of the Year.</span><span lang="fr">Prospection de 15+ organisations, appels de parrainage et négociation ; suivi de 5+ départements et partenaires, pour 275 000+ lectures et une 2ᵉ place « Impact Society of the Year ».</span></p>
+          <ul class="tags mono"><li>Biz dev</li><li>Negotiation</li><li>Reporting</li></ul>
+        </article>
+        <article class="card">
+          <canvas class="art" data-art="wave"></canvas>
+          <div class="card-meta mono"><span>AUCKLAND UNIV. OF TECHNOLOGY</span><span>2023</span></div>
+          <h3><span lang="en">Finalist — Accounting Case Competition</span><span lang="fr">Finaliste — Compétition de cas en comptabilité</span></h3>
+          <p><span lang="en">Analysed how AI is reshaping accounting for Hall Chadwick and presented a full market analysis with issues, opportunities and strategic recommendations to the jury.</span><span lang="fr">Analyse de l'impact de l'IA sur la comptabilité pour Hall Chadwick, présentée au jury avec enjeux, opportunités et recommandations stratégiques.</span></p>
+          <ul class="tags mono"><li>Analysis</li><li>AI</li><li>Pitch</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 03 EXPERIENCE ============ -->
+    <section class="frame section" id="experience">
+      <div class="sec-head mono"><span>[ 03 ]</span><span lang="en">Experience</span><span lang="fr">Expérience</span><canvas class="strip"></canvas></div>
+      <ol class="rows">
+        <li class="row">
+          <span class="mono when">NOV 2026</span>
+          <div><h4>42 London</h4><p class="role"><span lang="en">Discovery Week — Intern</span><span lang="fr">Stagiaire — Semaine de découverte</span></p>
+            <p><span lang="en">Built small web projects in HTML, CSS and JavaScript through peer-to-peer coding challenges.</span><span lang="fr">Projets web en HTML, CSS et JavaScript lors de défis de code en pair-à-pair.</span></p></div>
+          <span class="mono where">LONDON, UK</span>
+        </li>
+        <li class="row">
+          <span class="mono when">SEP 2024 – APR 2025</span>
+          <div><h4>180 Degrees Consulting</h4><p class="role"><span lang="en">Project Manager</span><span lang="fr">Chef de projet</span></p>
+            <p><span lang="en">Led cross-functional teams of 4–6 consultants across two project cycles with agile practices (sprints, Kanban, client feedback loops); designed and ran selection interviews for 5+ candidate groups.</span><span lang="fr">Pilotage d'équipes de 4 à 6 consultants sur deux cycles en méthodes agiles (sprints, Kanban, boucles de feedback client) ; entretiens de sélection pour 5+ groupes de candidats.</span></p></div>
+          <span class="mono where">EXETER, UK</span>
+        </li>
+        <li class="row">
+          <span class="mono when">FEB 2024 – JUN 2024</span>
+          <div><h4>180 Degrees Consulting</h4><p class="role"><span lang="en">Strategy Consultant</span><span lang="fr">Consultant en stratégie</span></p>
+            <p><span lang="en">Partner mapping and a complete social media strategy for KLNA, a humanitarian NGO.</span><span lang="fr">Cartographie de partenaires et stratégie social media complète pour KLNA, ONG humanitaire.</span></p></div>
+          <span class="mono where">EXETER, UK</span>
+        </li>
+        <li class="row">
+          <span class="mono when">SEP 2024 – FEB 2025</span>
+          <div><h4>Exeter Economics Review</h4><p class="role"><span lang="en">Partnership Officer</span><span lang="fr">Chargé de partenariats</span></p>
+            <p><span lang="en">Outreach to 15+ organisations, sponsorship calls and negotiation; relationships with 5+ departments and partners.</span><span lang="fr">Prospection de 15+ organisations, parrainages et négociation ; relations avec 5+ départements et partenaires.</span></p></div>
+          <span class="mono where">EXETER, UK</span>
+        </li>
+        <li class="row">
+          <span class="mono when">DEC 2020 – MAR 2021</span>
+          <div><h4>Damage Inc</h4><p class="role"><span lang="en">Team Leader</span><span lang="fr">Chef d'équipe</span></p>
+            <p><span lang="en">Hosted 10+ events for 200+ participants (≈ +25% division activity at peak) and re-engaged a low-activity team: +40% participation in three months.</span><span lang="fr">10+ événements pour 200+ participants (≈ +25 % d'activité en pointe) et remobilisation d'une équipe : +40 % de participation en trois mois.</span></p></div>
+          <span class="mono where">DUBAI, UAE</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============ 04 EDUCATION + SKILLS ============ -->
+    <section class="frame section split" id="education">
+      <div>
+        <div class="sec-head mono"><span>[ 04 ]</span><span lang="en">Education</span><span lang="fr">Formation</span><canvas class="strip"></canvas></div>
+        <ol class="edu">
+          <li><span class="mono when">2023 – 2025</span><h4><span lang="en">University of Exeter</span><span lang="fr">Université d'Exeter</span></h4><p>BSc Business Management — 2:1 (Upper Second-Class Honours)</p><p class="dim small">Business Analytics · Management Accounting · Marketing Communications · Operations · Strategy</p></li>
+          <li><span class="mono when">2022 – 2023</span><h4>INTO — <span lang="en">University of Exeter</span><span lang="fr">Université d'Exeter</span></h4><p><span lang="en">International Year One in Business — Distinction</span><span lang="fr">Année préparatoire internationale en gestion — avec distinction</span></p></li>
+          <li><span class="mono when">2022</span><h4>Lycée Français International Georges Pompidou</h4><p><span lang="en">French Baccalauréat — Maths &amp; LLCE, mention bien · Dubai</span><span lang="fr">Baccalauréat général — Maths &amp; LLCE, mention bien · Dubaï</span></p></li>
+        </ol>
+      </div>
+      <div>
+        <div class="sec-head mono"><span>[ 05 ]</span><span lang="en">Skills</span><span lang="fr">Compétences</span><canvas class="strip"></canvas></div>
+        <dl class="skills">
+          <dt class="mono"><span lang="en">Core</span><span lang="fr">Clés</span></dt>
+          <dd><span lang="en">Project management (agile) · Market analysis &amp; entry strategy · Client &amp; partnership development · Team leadership &amp; recruitment</span><span lang="fr">Gestion de projet (agile) · Analyse de marché &amp; stratégie d'entrée · Relation client &amp; partenariats · Management d'équipe &amp; recrutement</span></dd>
+          <dt class="mono"><span lang="en">Tools</span><span lang="fr">Outils</span></dt>
+          <dd>Excel · PowerPoint · R · HTML / CSS / JavaScript</dd>
+          <dt class="mono"><span lang="en">Languages</span><span lang="fr">Langues</span></dt>
+          <dd><span lang="en">French — native (C2) · English — bilingual (C2)</span><span lang="fr">Français — langue maternelle (C2) · Anglais — bilingue (C2)</span></dd>
+          <dt class="mono"><span lang="en">Off-hours</span><span lang="fr">Loisirs</span></dt>
+          <dd><span lang="en">Fencing · football · boxing · esports · watchmaking · new tech</span><span lang="fr">Escrime · football · boxe · esports · horlogerie · nouvelles technologies</span></dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="frame section contact" id="contact">
+      <canvas id="contactArt" class="contact-art" aria-hidden="true"></canvas>
+      <div class="sec-head mono"><span>[ 06 ]</span>Contact<canvas class="strip"></canvas></div>
+      <h2 class="display big"><span lang="en">Let's talk.</span><span lang="fr">Parlons-en.</span></h2>
+      <div class="contact-links">
+        <a class="mono link" href="mailto:Palomba.tonyr@gmail.com">Palomba.tonyr@gmail.com ↗</a>
+        <a class="mono link" href="https://linkedin.com/in/anthonypalomba" target="_blank" rel="noopener">linkedin.com/in/anthonypalomba ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <span>© 2026 Anthony Palomba Levaillant</span>
+    <span class="dim"><span lang="en">Rendered in 1-bit · Bayer 8×8 &amp; Atkinson dithering</span><span lang="fr">Rendu en 1 bit · tramage Bayer 8×8 &amp; Atkinson</span></span>
+    <a href="#top">↑ <span lang="en">Top</span><span lang="fr">Haut</span></a>
+  </footer>
+
+  <script src="dither.js"></script>
+</body>
+</html>
