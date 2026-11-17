@@ -239,3 +239,9 @@ html[data-lang="en"] [lang="fr"], html[data-lang="fr"] [lang="en"] { display: no
   .skills dd { border-top: 0; padding-top: 0; }
   .contact-art { width: 100%; opacity: .5; }
 }
+
+/* education as its own full-width section */
+#education .edu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 28px; }
+#skills .skills { grid-template-columns: 160px 1fr; max-width: 980px; }
+@media (max-width: 900px) { #education .edu { grid-template-columns: 1fr; } }
+@media (max-width: 760px) { #skills .skills { grid-template-columns: 1fr; } }
