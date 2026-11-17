@@ -292,7 +292,7 @@
   tick(); setInterval(tick, 1000);
 
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
-  document.querySelectorAll('.section .sec-head, .lead, .stat, .card, .row, .edu li, .skills, .big, .contact-links')
+  document.querySelectorAll('.section .sec-head, .lead, .stat, .sub-head, .fun-tile, .card, .row, .edu li, .skills, .big, .contact-links')
     .forEach(el => { el.classList.add('reveal'); io.observe(el); });
 
   let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(renderAll, 150); });
